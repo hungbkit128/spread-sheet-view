@@ -9,6 +9,7 @@
 import Foundation
 
 struct Address: Hashable {
+    
     let row: Int
     let column: Int
     let rowIndex: Int
@@ -16,6 +17,12 @@ struct Address: Hashable {
 
     var hashValue: Int {
         return 32768 * rowIndex + columnIndex
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(32768)
+        hasher.combine(rowIndex)
+        hasher.combine(columnIndex)
     }
 
     static func ==(lhs: Address, rhs: Address) -> Bool {

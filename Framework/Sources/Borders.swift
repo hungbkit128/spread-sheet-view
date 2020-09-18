@@ -9,6 +9,7 @@
 import UIKit
 
 public struct Borders {
+    
     public var top: BorderStyle
     public var bottom: BorderStyle
     public var left: BorderStyle
@@ -25,12 +26,17 @@ public enum BorderStyle {
 }
 
 extension BorderStyle: Equatable {
-    public static func ==(lhs: BorderStyle, rhs: BorderStyle) -> Bool {
+    
+    public static func == (lhs: BorderStyle, rhs: BorderStyle) -> Bool {
+        
         switch (lhs, rhs) {
+            
         case (.none, .none):
             return true
+        
         case let (.solid(lhs), .solid(rhs)):
             return lhs.width == rhs.width && lhs.color == rhs.color
+        
         default:
             return false
         }
