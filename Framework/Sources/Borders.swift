@@ -26,22 +26,30 @@ public enum BorderStyle {
 }
 
 extension BorderStyle: Equatable {
-    
-    public static func == (lhs: BorderStyle, rhs: BorderStyle) -> Bool {
-        
+    public static func ==(lhs: BorderStyle, rhs: BorderStyle) -> Bool {
         switch (lhs, rhs) {
-            
         case (.none, .none):
             return true
-        
-        case let (.solid(lhs), .solid(rhs)):
-            return lhs.width == rhs.width && lhs.color == rhs.color
-        
+        case (.solid, .solid):
+            return lhs == rhs
         default:
             return false
         }
     }
 }
+
+//extension BorderStyle: Equatable {
+//    public static func == (lhs: BorderStyle, rhs: BorderStyle) -> Bool {
+//        switch (lhs, rhs) {
+//        case (.none, .none):
+//            return true
+//        case let (.solid(lhs), .solid(rhs)):
+//            return lhs.width == rhs.width && lhs.color == rhs.color
+//        default:
+//            return false
+//        }
+//    }
+//}
 
 final class Border: UIView {
     var borders: Borders = .all(.none)

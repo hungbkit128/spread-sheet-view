@@ -8,9 +8,6 @@
 
 import UIKit
 
-//@available(*, deprecated, renamed: "Gridlines")
-//public typealias Grids = Gridlines
-
 public struct Gridlines {
     
     public var top: GridStyle
@@ -30,21 +27,30 @@ public enum GridStyle {
 }
 
 extension GridStyle: Equatable {
-    
-    public static func == (lhs: GridStyle, rhs: GridStyle) -> Bool {
+    public static func ==(lhs: GridStyle, rhs: GridStyle) -> Bool {
         switch (lhs, rhs) {
-            
         case (.none, .none):
             return true
-            
-        case let (.solid(lhs), .solid(rhs)):
-            return lhs.width == rhs.width && lhs.color == rhs.color
-            
+        case (.solid, .solid):
+            return lhs == rhs
         default:
             return false
         }
     }
 }
+
+//extension GridStyle: Equatable {
+//    public static func == (lhs: GridStyle, rhs: GridStyle) -> Bool {
+//        switch (lhs, rhs) {
+//        case (.none, .none):
+//            return true
+//        case let (.solid(lhs), .solid(rhs)):
+//            return lhs.width == rhs.width && lhs.color == rhs.color
+//        default:
+//            return false
+//        }
+//    }
+//}
 
 final class Gridline: CALayer {
     var color: UIColor = .clear {
